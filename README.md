@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to run
+
+1. Run `yarn install`
+2. Open terminal and run `yarn proxy`
+   (Using proxy to avoid error has been blocked by CORS policy)
+3. Open new terminal and run `yarn start`
+
 ## Available Scripts
 
 In the project directory, you can run:
