@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Modal, Container, Form, Row, Col, Spinner } from 'react-bootstrap';
 import { useForm } from '../../hooks/useForm';
 import SignerAPI from '../../api/Signer';
@@ -27,7 +27,7 @@ function SignerModal(props: IProps): JSX.Element {
     const [loading, setLoading] = useState<Boolean>(false);
     
     const addButton = <Button variant="danger" size="sm" onClick={handleShow}><i className="fa fa-plus"></i> TAMBAH</Button>;
-    const editButton = <Button variant="danger" size="sm" onClick={handleShow}><i className="fa fa-edit"></i> EDIT</Button>;
+    const editButton = <Button variant="outline-danger" size="sm" onClick={handleShow}><i className="fa fa-edit"></i> EDIT</Button>;
 
     const initialState: ISignerData = {
         id: props.signerData ? props.signerData.id : "",
@@ -45,7 +45,7 @@ function SignerModal(props: IProps): JSX.Element {
 
     async function submitSignerCallback() {
         let submitValue = values;
-        submitValue.npwp = values.npwp.split(/[\.-]/).join("");
+        submitValue.npwp = values.npwp.split(/[.-]/).join("");
 
         setLoading(true);
         if (props.signerData){
@@ -80,12 +80,6 @@ function SignerModal(props: IProps): JSX.Element {
             console.log("On submit signer: ", submitValue);
         }
     };
-
-    useEffect(() => {
-        if (show && props.signerData) {
-            console.log("On signer modal: ", props.signerData);
-        }
-    }, [show]);
     
     return (
         <>

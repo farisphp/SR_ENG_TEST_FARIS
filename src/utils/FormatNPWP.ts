@@ -1,5 +1,5 @@
 export const formatNPWP = (npwp: string) => {
-    const npwpNumber = npwp.split(/[\.-]/).join("");
+    const npwpNumber = npwp.split(/[.-]/).join("");
     console.log("npwp number only: ", npwpNumber);
     let formattedNPWP = npwpNumber.substring(0,2);
     if (npwpNumber.length > 2)

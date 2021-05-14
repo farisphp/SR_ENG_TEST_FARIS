@@ -3,6 +3,7 @@ import './Signer.css';
 import { RouteComponentProps } from 'react-router-dom';
 import { Container, Card, Table, Spinner } from 'react-bootstrap';
 import SignerModal from './Modal';
+import SignerDeleteModal from './DeleteModal';
 import SignerAPI from '../../api/Signer';
 import { formatNPWP } from '../../utils/FormatNPWP';
 
@@ -105,6 +106,7 @@ class Index extends React.Component<RouteComponentProps, IState> {
                                     <th>Sebagai</th>
                                     <th>Status</th>
                                     <th>Default</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,11 +116,18 @@ class Index extends React.Component<RouteComponentProps, IState> {
                                     <td>{signer.name}</td>
                                     <td>{signer.signatory === "TAXPAYER" ? "Wajib Pajak" : "Kuasa"}</td>
                                     <td>{signer.statusTaxpayer  === "ACTIVE" ? "Aktif" : "Tidak Aktif"}</td>
-                                    <td className="d-flex justify-content-between align-items-center">{signer.defaultSignatory ? "Ya" : "Tidak"} 
+                                    <td>{signer.defaultSignatory ? "Ya" : "Tidak"} </td>
+                                    <td>
                                         <SignerModal 
                                             signerData={signer} 
                                             toastSuccessFunc={this.setToast.bind(this, "success", "Berhasil memperbarui")}
                                             toastErrorFunc={this.setToast.bind(this, "error", "Gagal memperbarui")}
+                                            refreshFunc={this.getSigners.bind(this)}
+                                        />{" "}
+                                        <SignerDeleteModal 
+                                            id={signer.id} 
+                                            toastSuccessFunc={this.setToast.bind(this, "success", "Berhasil menghapus")}
+                                            toastErrorFunc={this.setToast.bind(this, "error", "Gagal menghapus")}
                                             refreshFunc={this.getSigners.bind(this)}
                                         />
                                     </td>

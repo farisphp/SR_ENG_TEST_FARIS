@@ -14,7 +14,7 @@ export const useForm = (callback: any, initialState: ISignerData) => {
 
     const onChangeNPWP = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log("On change "+event.target.name, formatNPWP(event.target.value));
-        const value = event.target.value.split(/[\.-]/).join("");
+        const value = event.target.value.split(/[.-]/).join("");
         if (/^[0-9]*$/.test(value)){
             setValues({ ...values, [event.target.name]: event.target.value });
         }
