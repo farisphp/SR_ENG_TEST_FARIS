@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test Renders correctly. 1`] = `
+Array [
+  <h2
+    class="header"
+  >
+    Penandatangan SPT
+  </h2>,
+]
+`;
